@@ -7,6 +7,7 @@
 }
 
 .playing {
-	transform: scale();
+	transform: scale(1.1);
 	border: 5px solid yellow;
+	box-shadow: 0 0 0.7em yellow;
 }
