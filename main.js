@@ -1,6 +1,6 @@
 
-window.addEventListener('keyup', function(e) {
-	const audio = document.querySelector(`audio[data-key="${e.keykode}"]`);
+window.addEventListener('keydown', function(e) {
+	let audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
 
 	console.log(audio)
 });
