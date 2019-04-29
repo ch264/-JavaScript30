@@ -7,5 +7,6 @@ window.addEventListener('keydown', function(e) {
 	// rewinds audio to start
 	audio.currentTime = 0;
 	audio.play();
+	key.classList.add('playing');
 	console.log(key)
 });

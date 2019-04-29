@@ -1,0 +1,12 @@
+.key {
+	border: 3px solid orange;
+	margin: 1em;
+	font-size: 1em;
+	padding: 0.5em;
+	transition:all 0.07s;
+}
+
+.playing {
+	transform: scale();
+	border: 5px solid yellow;
+}
