@@ -1,13 +1,53 @@
+body {
+	/* display: flex; */
+	/* flex-direction: column; */
+	/* box-sizing: border-box; */
+	margin: 0em;
+	padding: 0em;
+}
+
+
+.keys {
+	display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
 .key {
 	border: 3px solid orange;
 	margin: 1em;
 	font-size: 1em;
 	padding: 0.5em;
 	transition:all 0.07s;
+	text-align: center;
+
+	/* align-items: center;
+	justify-content: center;
+	display: flex;
+	/* display: block; */
+	/* flex: 1; */
+	/* min-height: 100vh; */
+
 }
 
 .playing {
 	transform: scale(1.1);
 	border: 5px solid yellow;
 	box-shadow: 0 0 0.7em yellow;
+}
+
+div {
+	/* width: 5em;
+	height: 5em;
+	display: flex;
+	/* flex-direction: column; */
+	/* justify-content: center; */
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
