@@ -1,3 +1,4 @@
+/* names are defined in html */
 :root {
 	--base: #ffc600;
 	--spacing: 0.7px;
@@ -13,7 +14,11 @@ body {
 }
 
 .controls {
-	margin-bottom: 3em;
+	margin-bottom: 1em;
+}
+
+input {
+	width: 100%;
 }
 
 img {
@@ -22,10 +27,30 @@ img {
 	/* padding based on variable spacing */
 	padding: var(--spacing);
 	background: var(--base);
-	filter: var(--blur);
+	filter:blur(var(--blur));
 }
 
 /* any class with h1 will have the color of the variable base */
-.h1 {
+.h2 {
 	color: var(--base);
+}
+
+
+/* enables stylings in chrome in responsive mode */
+input[type=range] {
+  -webkit-appearance: none;
+  background: transparent;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #fff;
+  height: 18px;
+  width: 18px;
+  margin-top: -8px;
+  border-radius: 99px;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 300px;
+  height: 4px;
+  background: #ddd;
 }

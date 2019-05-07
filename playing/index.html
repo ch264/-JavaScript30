@@ -8,15 +8,19 @@
 	<title>Playing</title>
 </head>
 <body>
-	<h2>Update CSS variables with <span class='h1'>JS</span></h2>
-	<label for="spacing">Spacing</label>
-	<input type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+	<h3>Update CSS variables with <span class='h2'>JS</span></h3>
 
-	<label for="blur">Blur</label>
-	<input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+	<div class="controls">
+		<label for="spacing">Spacing</label>
+		<!-- create suffix value in px -->
+		<input type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
 
-	<label for="base">Base Color</label>
-	<input type="color" name="base" value="ffc600">
+		<label for="blur">Blur</label>
+		<input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+		<label for="base">Base Color</label>
+		<input type="color" name="base" value="#ffc600">
+	</div>	
 
 	<img src="michelle-1560485-unsplash.jpg">
 
