@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>HTML5 Canvas</title>
+	</head>
+	<body>
+		<canvas id="draw" width="800" height="800"></canvas>
+		
+		<script>
+			const canvas = document.querySelector('#draw');
+			const context = canvas.getContext('2d');
+			canvas.width = window.innerWidth;
+			canvas.heigh = window.innerHeight;
+			context.strokeStyle = '#BADA55';
+			context.lineJoin = 'round';
+			context.lineCap = 'round';
+			context.lineWidth = 50;
+			context.globalCompositeOperation = 'multiply';
+
+			// initial variables
+			let isDrawing = false;
+			// start line 
+			let lastX = 0;
+			let lastY = 0; 
+			let hue = 0;
+			let direction = true;
+		
+
+
+			function draw(e) {
+				// stop function when not mousedown
+				if (!isDrawing) return;
+				console.log(e)
+				// set strokestyle as we draw
+				context.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+				context.beginPath();
+				// start from
+				context.moveTo(lastX, lastY);
+				// go to
+				context.lineTo(e.offsetX, e.offsetY)
+				context.stroke();
+
+				// update draw function
+				[lasX, lastY] = [e.offsetX, e.offsetY];
+				lastX = e.offsetX;
+				lastY = e.offsetY;
+				
+				// increment hue whilst drawing
+				hue++;
+				// reset hue
+				if (hue >= 360) {
+					hue = 0;
+				}
+				// increment line width from 0 to 100. flip direction and increement or decreement accordingly
+				if (context.lineWidth >= 100 || context.lineWidth <=1) {
+					direction = !direction;
+				}
+				if (direction) {
+					context.lineWidth++;
+				} else {
+					context.lineWidth--;
+				}
+			}
+
+			canvas.addEventListener('mousedown', (e) => {
+				isDrawing = true;
+				// on mousedown, before mouse move, update last X and last Y not start at 00
+				[lasX, lastY] = [e.offsetX, e.offsetY];
+				lastX = e.offsetX;
+				lastY = e.offsetY;
+			});
+
+
+			// click and drag functionality
+			canvas.addEventListener('mousemove', draw);
+			canvas.addEventListener('mouseup', () => isDrawing = false);
+			canvas.addEventListener('mouseout', () => isDrawing = false);
+
+
+		</script>
+
+		<style>
+			html, body {
+				margin: 0;
+			}
+		</style>
+
+	</body>
+</html>
