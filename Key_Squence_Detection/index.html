@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Key Detection</title>
+		<script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+	</head>
+	<body>
+
+	<script>
+		let age = 100; 
+		let age2 = age;
+		console.log(age, age2); 
+		age = 200;
+		console.log(age, age2)
+
+
+		let name = 'Lala';
+		let name2 = name;
+		console.log(name, name2);
+		name = 'Frank';
+		console.log(name, name2)
+
+		const players = ['Hannah', 'Annika', 'Tom', 'Bob'];
+		const team = players;
+
+		console.log(players, team);
+		// team is just a copy of the array and a reference to the original array
+		team[5] = 'Max';
+
+
+
+		///////////////////////////////////////////////////////////////////////////////////s
+		// different ways to make a copy of an array without altering the original array /////////////////////////////////////////////////////////////////////////////////////
+
+
+
+		// slice makes a copy of the original array
+		const team2 = players.slice();
+
+		const team3 = [].concat(players);
+
+		const team4 = [...players]
+		team4[5] = 'slice of pizza?';
+		console.log(team4)
+
+		const team5 = Array.from(players)
+
+///////////////////////////////////////////////////////////////////////////////////s
+//objects /////////////////////////////////////////////////////////////////////////////////////
+
+		const person = {
+			name: 'Captain Sparrow',
+			age: 45
+		}		
+
+		// making a reference is not a copy.
+		const captain = person;
+		captain.number = 100; 
+		console.log(person);
+
+		// overrite the value you want to
+		captain2 = Object.assign({}, person, { number: 60})
+		console.log(captain2);
+
+
+	</script>
+
+</body>
+</html>
