@@ -24,7 +24,7 @@
 		const players = ['Hannah', 'Annika', 'Tom', 'Bob'];
 		const team = players;
 
-		console.log(players, team);
+		console.log('players:', players, 'team:', team);
 		// team is just a copy of the array and a reference to the original array
 		team[5] = 'Max';
 
@@ -37,12 +37,14 @@
 
 		// slice makes a copy of the original array
 		const team2 = players.slice();
+		console.log('team2:', team2)
 
 		const team3 = [].concat(players);
+		console.log('team3:', team3)
 
 		const team4 = [...players]
 		team4[5] = 'slice of pizza?';
-		console.log(team4)
+		console.log('team4:', team4)
 
 		const team5 = Array.from(players)
 
@@ -57,12 +59,47 @@
 		// making a reference is not a copy.
 		const captain = person;
 		captain.number = 100; 
-		console.log(person);
+		console.log('person:', person);
 
 		// overrite the value you want to
-		captain2 = Object.assign({}, person, { number: 60})
-		console.log(captain2);
+		captain2 = Object.assign({}, person, { number: 60, age: 12})
+		console.log('captain2:', captain2);
 
+		// object spread
+		const captain3 = {...person};
+		console.log('captain3:', captain3)
+
+
+		const chris = {
+			name: 'chris',
+			age: 100,
+			social: {
+				twitter: '@chris.twitter',
+				facebook: 'chris.facebook'
+			}
+		}
+		console.clear()
+		console.log('chris:', chris)
+
+
+		// make a copy of chris and store in dev, when update dev, it does not change the original chris object. it is not a reference, only 1 level deep clone
+		const dev = Object.assign({}, chris);
+
+		dev.name = 'christina';
+		console.log('dev', dev);
+		console.log('chris', chris)
+
+		// when you use object.assign, it does only one level. If you want to clone the entire nested objectes you need a function called clone deep!
+		
+		// dev.social.twitter = '@coolman';
+		console.log('dev.social', dev);
+		console.log('chris.social', chris)
+
+		// return string that is no longer an object and parse it back into an object, to untouch original copy.
+		const dev2 = JSON.parse(JSON.stringify(chris));
+		dev2.social.twitter = '@coolman2';
+		console.log('dev.social2', dev2);
+		console.log('chris.social2', chris)
 
 	</script>
 
