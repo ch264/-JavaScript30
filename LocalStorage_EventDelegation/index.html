@@ -68,8 +68,25 @@
 				}).join('');
 			}
 
-			addItems.addEventListener('submit', addItem);
+			// event delegation: parents tell children what to do when they are newly created
+			function toggleDone(e) {
+				console.log(e.target);
+				// skip this unless its an input
+				if(!e.target.matches('input')) return;
+				// use index value to reference target in array
+				const element = e.target;
+				// console.log(element.dataset.index);
+				const index = element.dataset.index;
+				// set index to done property. if this is true, it will be the opposite: false, and vice versa. flip flop between true and false
+				items[index].done = !items[index].done
+				// run these once more to update the visually update the changed property aboce  on the page
+				localStorage.setItem('items', JSON.stringify(items));
+				populateList(items, itemsList);
+			}
 
+			addItems.addEventListener('submit', addItem);
+			// listen for click and check in function if that is what we want and set checked to true
+			itemsList.addEventListener('click', toggleDone);
 			populateList(items, itemsList);
 		
 		</script>
