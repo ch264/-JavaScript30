@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+            <title>Understanding JavaScript's Capture</title>
+        </head>
+    <body class="bod">
+
+    <div class="one">
+        <div class="two">
+            <div class="three">
+            </div>
+        </div>
+    </div>
+
+    <style>
+    html {
+        box-sizing: border-box;
+    }
+    
+    *, *:before, *:after { 
+        box-sizing: inherit; 
+    }
+    div {
+        width: 100%;
+        padding: 100px;
+    }
+    .one {
+        background: thistle;
+    }
+    .two {
+        background: mistyrose;
+    }
+    .three {
+        background: coral;
+    }
+    </style>
+
+    <button></button>
+    
+    <script>
+        // the browser will figure out what nested element you clicked on and will trigger a click on all other elements and bubble up to the top of the document 
+
+        // when click on body the click ripples down. then it starts at bottom and bubbles back up, which means that it triggers the events on the way up
+        const divs = document.querySelectorAll('div');
+
+        function logText(e) {
+            console.log(this.classList.value);
+            // stop bubbling up and only use function on element that I clicked on
+        //    e.stopPropagation();
+        }
+
+        // document.body.addEventListener('click', logText)
+
+        divs.forEach(div => div.addEventListener('click', logText, {
+            // object capture: true means that you run the function on the way down rather than on the way up
+            capture: false,
+            once: true // true listens for click and unbinds itself, which is the same as remove of something on click. therefore this function runs once and then never again until page load. you can use it for store checkout button, you can unbind it so that users cannot click on checkout several times
+        }))
+
+
+    </script>
+    </body>
+</html>
