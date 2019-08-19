@@ -94,8 +94,11 @@
         this.classList.add('trigger-enter');
         // when you change function to arrow function, and the value of 'this' is inherited by the parent function
         setTimeout(() => {
-            console.log(this)
-            this.classList.add('trigger-enter-active');
+            // never see content to early when flicking between li in nav bar
+            if (this.classList.contains('trigger-enter')) {
+                console.log(this)
+                this.classList.add('trigger-enter-active');
+            }
         }, 150);
 
 
