@@ -7,7 +7,7 @@
     </head>
     
     <body>
-    <h2>Cool</h2>
+    <!-- <h2>Cool</h2> -->
     <nav class="top">
         <div class="dropdownBackground">
             <span class="arrow"></span>
@@ -88,19 +88,45 @@
     const nav = document.querySelector('.top');
 
     // when hover over li, find content within it and then display it
+    // do 2 stage enter and active and white div container knows how big the content is that it should wrap
     function handleEnter() {
-        console.log("enter")
+        // console.log("enter")
         this.classList.add('trigger-enter');
         // when you change function to arrow function, and the value of 'this' is inherited by the parent function
         setTimeout(() => {
             console.log(this)
             this.classList.add('trigger-enter-active');
-        }, 150)
+        }, 150);
+
+
+        // open white div
+        background.classList.add('open');
+
+        const dropdown = this.querySelector('.dropdown');
+        // console.log(dropdown)
+        // get coordinates, to where dropdown is on page, relatively
+        const dropdownCoords = dropdown.getBoundingClientRect();
+        const navCoords = nav.getBoundingClientRect();
+        console.log(navCoords)
+
+        const coords = {
+            height: dropdownCoords.height,
+            width: dropdownCoords.width,
+            // offset coords with top nav so that when content is added the nav is not pushed away from the div container
+            top: dropdownCoords.top - navCoords.top,
+            left: dropdownCoords.left - navCoords.left
+        }
+
+        background.style.setProperty('width', `${coords.width}px`);
+        background.style.setProperty('height', `${coords.height}px`);
+        // move white div above nav links
+        background.style.setProperty('transform', `translate(${coords.left}px, ${coords.top}px`);
     }
 
     function handleLeave() {
         console.log("leave")
         this.classList.remove('trigger-enter', 'trigger-enter-active');
+        background.classList.remove('open');
     }
 
     // when hover over li call handle function

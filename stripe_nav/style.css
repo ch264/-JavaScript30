@@ -75,8 +75,7 @@ nav ul {
 
 /* ////////////////////////////////////////////////////////////// */
 
-
-
+/* show white div */
 .dropdownBackground {
     width: 100px;
     height: 100px;
@@ -93,6 +92,10 @@ nav ul {
 .dropdownBackground.open {
     opacity: 1;
 }
+
+/* //////////////////////////////////////////////////////////////// */
+
+
 .arrow {
     position: absolute;
     width: 20px;
